@@ -6,8 +6,8 @@ export const themes = {
     background: "#222222",
   },
   light: {
-    fontColor: "#000",
-    background: "#eee",
+    fontColor: "#000000",
+    background: "#eeeeee",
   },
 };
 
