@@ -4,7 +4,7 @@ import { themes, ThemeContext } from "./themes-context";
 
 class App extends React.Component {
   state = {
-    theme: themes.dark,
+    theme: themes.light,
   };
   toggleTheme = () => {
     const newTheme =
@@ -20,10 +20,10 @@ class App extends React.Component {
           <ThemedButton onClick={this.toggleTheme}>
             {"Dynamic Theme"}
           </ThemedButton>
-          <ThemedButton onClick={this.toggleTheme}>
-            {"Default Theme"}
-          </ThemedButton>
         </ThemeContext.Provider>
+        <ThemedButton onClick={this.toggleTheme}>
+          {"Default Theme"}
+        </ThemedButton>
       </div>
     );
   }
