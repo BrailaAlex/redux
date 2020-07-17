@@ -6,48 +6,48 @@ const webpack = require("webpack");
 module.exports = (env, argv) => {
   const isProduction = argv.mode === "production";
   const config = {
-    entry: "./src/index.jsx",
+    entry: "./src/index.js",
     output: {
-      path: __dirname + '/review_build',
-      filename: "bundle.js"
+      path: __dirname + "/review_build",
+      filename: "bundle.js",
     },
     module: {
       rules: [
         {
           test: /.jsx?$/,
-          use: ["babel-loader"]
+          use: ["babel-loader"],
         },
         {
           test: /.s?css$/,
           use: [
             isProduction ? MiniCssExtractPlugin.loader : "style-loader",
             "css-loader",
-            "sass-loader"
-          ]
-        }
-      ]
+            "sass-loader",
+          ],
+        },
+      ],
     },
     plugins: [
       new webpack.ProgressPlugin(),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: "./src/index.html"
-      })
+        template: "./src/index.html",
+      }),
     ],
     resolve: {
-      extensions: [".js", ".jsx"]
+      extensions: [".js", ".jsx"],
     },
     devServer: {
       hot: true,
       port: 9007,
-      historyApiFallback: true
-    }
+      historyApiFallback: true,
+    },
   };
 
   if (isProduction) {
     config.plugins.push(
       new MiniCssExtractPlugin({
-        filename: "[name].css"
+        filename: "[name].css",
       })
     );
   }
