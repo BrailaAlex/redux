@@ -1,9 +1,8 @@
+import { CREATE, DELETE } from "./users.actions";
+
 const initState = {
   usersList: [],
 };
-
-const CREATE = "CREATE/USER";
-const DELETE = "DELETE/USER";
 
 export const usersReducer = (state = initState, action) => {
   switch (action.type) {

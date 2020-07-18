@@ -1,4 +1,7 @@
-export const createUser = (user) => {
+export const CREATE = "CREATE/USER";
+export const DELETE = "DELETE/USER";
+
+export const addUser = (user) => {
   return {
     type: CREATE,
     user,
