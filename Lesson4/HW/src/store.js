@@ -1,8 +1,12 @@
-import { createStore } from "redux";
-import { usersReducer } from "./users/users.reducer";
+import { createStore, combineReducers } from "redux";
+import usersReduser from "./users/users.reducer";
+
+const appReducer = combineReducers({
+  users: usersReduser,
+});
 
 const store = createStore(
-  usersReducer,
+  appReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 

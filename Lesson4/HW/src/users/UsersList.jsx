@@ -1,29 +1,26 @@
+import React from "react";
 import { connect } from "react-redux";
 import * as userActions from "./users.actions";
-import React from "react";
-import Pagination from "./Pagination";
 import User from "./User";
+import Pagination from "./Pagination";
 
-class Userslist extends React.Component {
+class UsersList extends React.Component {
   render() {
-    const { users, currentPage, goPrev, goNext } = this.props;
-    const itemsOnPage = 3;
-    const currentUserslist = users.slice(
-      currentPage * itemsOnPage,
-      (currentPage + 1) * itemsOnPage
-    );
+    const { users, currentPage, goNext, goPrev } = this.props;
+    const currentUsersList = users.slice(currentPage * 3, 3 + currentPage * 3);
+
     return (
       <div>
         <Pagination
-          goPrev={goPrev}
           goNext={goNext}
+          goPrev={goPrev}
           currentPage={currentPage}
           totalItems={users.length}
-          itemsPerPage={itemsOnPage}
+          itemsPerPage={3}
         />
         <ul className="users">
-          {currentUserslist.map((user) => (
-            <User key={user.id} name={user.name} age={user.age} />
+          {currentUsersList.map((user) => (
+            <User key={user.id} {...user} />
           ))}
         </ul>
       </div>
@@ -32,18 +29,16 @@ class Userslist extends React.Component {
 }
 
 const mapState = (state) => {
-  return {
-    currentPage: state.currentPage,
-    users: state.usersList,
-  };
+  return { users: state.users.usersList, currentPage: state.users.currentPage };
 };
 
 const mapDispatch = {
-  goPrev: userActions.goPrev,
   goNext: userActions.goNext,
+  goPrev: userActions.goPrev,
 };
 
 const connector = connect(mapState, mapDispatch);
-const connectedUsers = connector(Userslist);
 
-export default connectedUsers;
+const Users = connector(UsersList);
+
+export default Users;
