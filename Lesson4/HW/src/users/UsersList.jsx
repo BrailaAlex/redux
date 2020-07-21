@@ -8,7 +8,7 @@ class Userslist extends React.Component {
   render() {
     const { users, currentPage, goPrev, goNext } = this.props;
     const itemsOnPage = 3;
-    const CurrentUserslist = users.slice(
+    const currentUserslist = users.slice(
       currentPage * itemsOnPage,
       (currentPage + 1) * itemsOnPage
     );
@@ -21,8 +21,8 @@ class Userslist extends React.Component {
           totalItems={users.length}
           itemsPerPage={itemsOnPage}
         />
-        <ul class="users">
-          {CurrentUserslist.map((user) => (
+        <ul className="users">
+          {currentUserslist.map((user) => (
             <User key={user.id} name={user.name} age={user.age} />
           ))}
         </ul>
