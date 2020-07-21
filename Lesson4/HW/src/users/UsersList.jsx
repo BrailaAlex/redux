@@ -17,7 +17,7 @@ class Userslist extends React.Component {
         <Pagination
           goPrev={goPrev}
           goNext={goNext}
-          currentPage={currentPage + 1}
+          currentPage={currentPage}
           totalItems={users.length}
           itemsPerPage={itemsOnPage}
         />
