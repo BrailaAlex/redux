@@ -4,13 +4,13 @@ export const RESET = "COUNTER/RESET";
 
 export const increment = () => {
   return {
-    type: INCREASE,
+    type: INCREMENT,
   };
 };
 
 export const decrement = () => {
   return {
-    type: DECREASE,
+    type: DECREMENT,
   };
 };
 
