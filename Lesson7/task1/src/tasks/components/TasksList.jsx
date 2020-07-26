@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { tasksListSelector } from "../tasks.selectors";
+import { sortedTasksListSelector } from "../tasks.selectors";
 import * as tasksActions from "../tasks.actions";
 import Task from "./Task";
 
@@ -11,31 +11,28 @@ const TasksList = ({ tasksList, getTasksList, deleteTask, updateTask }) => {
 
   return (
     <ul className="list">
-      {tasksList
-        .slice()
-        .sort((a, b) => a.done - b.done)
-        .map((task) => (
-          <Task
-            key={task.id}
-            {...task}
-            deleteTask={deleteTask}
-            updateTask={updateTask}
-          />
-        ))}
+      {tasksList.map((task) => (
+        <Task
+          key={task.id}
+          {...task}
+          deleteTask={deleteTask}
+          updateTask={updateTask}
+        />
+      ))}
     </ul>
   );
 };
 
 const mapState = (state) => {
   return {
-    tasksList: tasksListSelector(state),
+    tasksList: sortedTasksListSelector(state),
   };
 };
 
 const mapDispatch = {
   getTasksList: tasksActions.getTasksList,
   deleteTask: tasksActions.deleteTask,
-  updateTask: tasksActions.toggleTask,
+  updateTask: tasksActions.updateTask,
 };
 
 export default connect(mapState, mapDispatch)(TasksList);

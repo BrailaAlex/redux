@@ -32,7 +32,7 @@ export const createTask = (text) => {
   };
 };
 
-export const toggleTask = (taskId) => (dispatch, getState) => {
+export const updateTask = (taskId) => (dispatch, getState) => {
   const state = getState();
   const tasksList = tasksListSelector(state);
   const task = tasksList.find((task) => task.id === taskId);
