@@ -14,7 +14,9 @@ const Task = ({ taskData, deleteTask, done, id, text, updateTask }) => {
         className="list-item__checkbox"
         onClick={() => updateTask(id)}
       />
-      <span className="list-item__text">{text}</span>
+      {/* <span className="list-item__text"> */}
+      {text}
+      {/* </span> */}
       <button
         onClick={() => deleteTask(id)}
         className="list-item__delete-btn"
